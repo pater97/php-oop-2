@@ -21,6 +21,7 @@ class premiumUser extends user{
     public $level;
     public $premiumUser;
     public $discount;
+    public $creditCard;
 
     function __construct($name,$lastname,$age,$email,$phoneNumber,int $level,bool $premiumUser=false){
         parent::__construct($name,$lastname,$age,$email,$phoneNumber);
@@ -38,6 +39,10 @@ class premiumUser extends user{
         } return $this->discount = 'nessuno sconto applicabile';
     }
 
+    public function insertCrediCard($creditCard){
+        $this->creditCard = ($creditCard);
+    }
+
 }
 
 $user_1 = new premiumUser('mario','rossi',50,'mrossi@gmail.com',3334556767,2,true);
@@ -46,3 +51,7 @@ $user_3 = new premiumUser('carlo','esposito',80,'espo@gmail.com',3217856767,1,tr
 $user_1->setDiscount();
 $user_2->setDiscount();
 $user_3->setDiscount();
+$user_3->insertCrediCard('visa' . ' ' . rand(1111111111111111,9999999999999999));
+$user_2->insertCrediCard('visa' . ' ' . rand(1111111111111111,9999999999999999));
+$user_1->insertCrediCard('visa' . ' ' . rand(1111111111111111,9999999999999999));
+

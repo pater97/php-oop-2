@@ -57,6 +57,7 @@
     }
  }
 
+ 
  $ax = new gardenProduct(rand(0,100),'ax','garden',19.99,true,'manual','wood','knife');
  $gloves = new kitchenProduct(rand(0,100),'gloves','outdoor',4.99,false,'gloves','winter','wool');
  $colander = new fashionProduct(rand(0,100),'colander','kitchen',9.99,true,'salty','stove','plastic');
