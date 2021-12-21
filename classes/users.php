@@ -6,7 +6,6 @@ class user{
     public $age;
     public $email;
     public $phoneNumber;
-    public $premiumUser;
 
     function __construct($name,$lastname,$age,$email,$phoneNumber,$premiumUser=false){
         $this->name = $name;
@@ -18,6 +17,32 @@ class user{
     }
 }
 
-$user_1 = new user('mario','rossi',50,'mrossi@gmail.com',3334556767);
-$user_2 = new user('ludovica','olgiati',27,'ldol@gmail.com',3334526767);
-$user_3 = new user('carlo','esposito',80,'espo@gmail.com',3217856767);
+class premiumUser extends user{
+    public $level;
+    public $premiumUser;
+    public $discount;
+
+    function __construct($name,$lastname,$age,$email,$phoneNumber,int $level,bool $premiumUser=false){
+        parent::__construct($name,$lastname,$age,$email,$phoneNumber);
+        $this->level = $level;
+        $this->premiumUser = $premiumUser;
+    }
+
+    public function setDiscount(){
+        if($this->premiumUser){
+            if($this->level == 2){
+                return $this->discount = '20%';
+            }else{
+                return $this->discount = '10%';
+            }
+        } return $this->discount = 'nessuno sconto applicabile';
+    }
+
+}
+
+$user_1 = new premiumUser('mario','rossi',50,'mrossi@gmail.com',3334556767,2,true);
+$user_2 = new premiumUser('ludovica','olgiati',27,'ldol@gmail.com',3334526767,0);
+$user_3 = new premiumUser('carlo','esposito',80,'espo@gmail.com',3217856767,1,true);
+$user_1->setDiscount();
+$user_2->setDiscount();
+$user_3->setDiscount();
